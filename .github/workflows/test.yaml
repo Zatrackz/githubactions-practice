@@ -1,0 +1,33 @@
+# How we write a workflow for github actions
+
+# Each job must have a unique name within tghe workflow. This name is used to identify tyhe job in the workflow configuration. 
+name: Learn Github actions
+
+
+# ON will specify what will cxause our github actions workflow to be triigered
+# Every job in your workflow will have their own runner, which is a serverless or server-based computer (virtual machine or container) on which the job will run. 
+# By default, there are 3 types of serverless runners that gtithub actions will provide: Ubuntu-latest, macos-latest., or windows-latest. 
+# IMPORTANT: After a job is done being executed on a serverless runless provided by github actions, that runner will be cleaned up and used by another customer
+# If you want your job to run on a server-based runner (selkf-hosted runner), you will have to create a server and configure github actions to make use of that server.
+on:
+    push:
+      branches:
+        - main
+    workflow_dispatch:
+
+
+# Jobs are a set of one or more steps that we want github actions to perform. You can have multiple jobs in your workflow. 
+# By default, all Jobs in a workflow run in parallel with each other. However we can configure our jobs in our workflow to run conservative using the 'needs' command.
+# The 'needs' command will cause jobs in a workflows to start only after sucessful completion of a specified set of jobs.
+# Every job has one or more steps, which is a specific tasks that we want gikthub actions to do. Steps in a job are executable sequential i.e executed one after the other.
+# We can also name our steps. There are only TWO arguments that can be defined in a step: uses or run.
+
+# Jobs can produce outputs artifacts or information that can be used by sequential jobs.  You can define output vfalues in a job and other jobs can access these outputs as inputs. 
+
+jobs:
+    myfirstjob:
+        runs-on: Ubuntu-latest
+        steps:
+          - name: clone my repository
+            run: echo "I am learning github actions"
+          
