@@ -15,6 +15,9 @@ on:
     push:
       branches:
         - main
+    
+# how do you make certain commits to not trigger the workflow?
+# run git commit -m "commit message [skip ci]"
     workflow_dispatch:
 
 
@@ -59,3 +62,12 @@ jobs:
       steps:
         - name: making use of actions
           uses: actions/checkout@v4
+
+# configure maven and setup maven integration with github actions
+# The developers will let me know what java version is appropriate for the app code
+# Since this folder doesn't have a pom.xml or app code, this job will be useless. 
+        - name: setup java and maven
+          uses: actions/setup-java@v3
+          with:
+            distribution: temurin
+            java-version: 17
