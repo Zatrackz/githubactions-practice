@@ -33,4 +33,10 @@ jobs:
         steps:
           - name: clone my repository
             run: echo "I am learning github actions"
+
+    mysecondjob:
+        runs-on: Ubuntu-latest
+        steps:
+          - name: learning github actions
+            run: echo "My second job"
           
