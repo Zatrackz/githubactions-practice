@@ -55,6 +55,7 @@ jobs:
 # we can make use of actions to call these pre-written codes from the github marketplace. 
     myfourthjob:
       runs-on: Ubuntu-latest
+      needs: mythirdjob
       steps:
         - name: making use of actions
           uses: actions/checkout@v4
