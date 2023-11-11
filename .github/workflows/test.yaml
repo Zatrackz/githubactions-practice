@@ -40,11 +40,21 @@ jobs:
           - name: learning github actions
             run: echo "My second job"
   
-  # Made use of the needs argument here in the 3rd job. ONLY when the second job
-  # is successaful will the third job run. 
+# Made use of the needs argument here in the 3rd job. ONLY when the second job
+# is successaful will the third job run. 
     mythirdjob:
       runs-on: Ubuntu-latest
       needs: mysecondjob
       steps:
         - name: learning github actions
           run: echo "My second job"
+
+# Actions are a set of pre-writtren codes that are used to perform a particular tasks. They are configured by someone else and 
+# stored in the github marketplace so that customers can leverage them. 
+# Actions are perfect for tasks that you have noticed that are done repeatedly. So instead of typing these commands over and over 
+# we can make use of actions to call these pre-written codes from the github marketplace. 
+    myfourthjob:
+      runs-on: Ubuntu-latest
+      steps:
+        - name: making use of actions
+          uses: actions/checkout@v4
