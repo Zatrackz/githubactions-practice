@@ -35,13 +35,13 @@ on:
 
 jobs:
     myfirstjob:
-        runs-on: Ubuntu-latest
+        runs-on: self-hosted
         steps:
           - name: clone my repository
             run: echo "I am learning github actions"
 
     mysecondjob:
-        runs-on: Ubuntu-latest
+        runs-on: self-hosted
         steps:
           - name: learning github actions
             run: echo "My second job"
@@ -49,28 +49,9 @@ jobs:
 # Made use of the needs argument here in the 3rd job. ONLY when the second job
 # is successaful will the third job run. 
     mythirdjob:
-      runs-on: Ubuntu-latest
+      runs-on: self-hosted
       needs: mysecondjob
       steps:
         - name: learning github actions
           run: echo "My second job"
 
-# Actions are a set of pre-writtren codes that are used to perform a particular tasks. They are configured by someone else and 
-# stored in the github marketplace so that customers can leverage them. 
-# Actions are perfect for tasks that you have noticed that are done repeatedly. So instead of typing these commands over and over 
-# we can make use of actions to call these pre-written codes from the github marketplace. 
-    myfourthjob:
-      runs-on: Ubuntu-latest
-      needs: mythirdjob
-      steps:
-        - name: making use of actions
-          uses: actions/checkout@v4
-
-# configure maven and setup maven integration with github actions
-# The developers will let me know what java version is appropriate for the app code
-# Since this folder doesn't have a pom.xml or app code, this job will be useless. 
-        - name: setup java and maven
-          uses: actions/setup-java@v3
-          with:
-            distribution: temurin
-            java-version: 17
