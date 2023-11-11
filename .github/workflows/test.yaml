@@ -39,4 +39,12 @@ jobs:
         steps:
           - name: learning github actions
             run: echo "My second job"
-          
+  
+  # Made use of the needs argument here in the 3rd job. ONLY when the second job
+  # is successaful will the third job run. 
+    mythirdjob:
+      runs-on: Ubuntu-latest
+      needs: mysecondjob
+      steps:
+        - name: learning github actions
+          run: echo "My second job"
